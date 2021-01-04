@@ -4,7 +4,7 @@ using namespace std;
 
 int main()
 {
-	int n, m, temp = 0, arr[5][5], p[4];
+	int n, m, k, temp = 0, arr[5][5], p[4];
 	for (int i = 0; i < 4; i++)
 	{
 		p[i] = 0;
@@ -18,20 +18,23 @@ int main()
 			//temp[i][j] = arr[i][j];
 		}
 	}
-
-	cin >> n >> m;
-
-	n = n - 1;
-	m = m - 6;
-	for (int i = 0; i < 5; i++)
+	cin >> k;
+	for (int z = 0; z < k; z++)
 	{
-		for (int j = 0; j < 5; j++)
+		cin >> n >> m;
+
+		n = n - 1;
+		m = m - 6;
+		for (int i = 0; i < 5; i++)
 		{
-			if (i == m)
+			for (int j = 0; j < 5; j++)
 			{
-				temp = arr[i][j];
-				arr[i][j] = arr[j][n];
-				arr[j][n] = temp;
+				if (i == m)
+				{
+					temp = arr[i][j];
+					arr[i][j] = arr[j][n];
+					arr[j][n] = temp;
+				}
 			}
 		}
 	}
