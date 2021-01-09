@@ -10,11 +10,10 @@ int main()
 
 	if (a > b)
 	{
-		t = a;
+		t = b;
 		b = a;
 		a = t;
 	}
-
 	for (int i = 1; i <= b; i++)
 	{
 		if (a % i == 0 && b % i == 0)
