@@ -19,28 +19,32 @@ bool compare(gst a, gst b)
 		return false;
 }
 
+bool operator<(gst a, gst b)
+{
+	if (a.dist < b.dist)
+		return true;
+	else
+		return false;
+}
+
 int main()
 {
-	int n, l, p, ans  = -1;
+	int n, l, p, ans = 0;
 	cin >> n;
-	for (int i = 1; i <= n; i++)
+	for (int i = 0; i < n; i++)
 	{
 		cin >> g[i].dist >> g[i].oil;
 	}
 	cin >> l >> p;
 
-	sort(g + 1, g + n + 1, compare);
-	/*
-	for (int i = 1; i <= n; i++)
-	{
-		cout << g[i].dist << " " << g[i].oil << endl;
-	}*/
+	sort(g, g + n, compare);
+
 	int curl = p, curp = 0;
 	priority_queue<int> pq;
 
 	while (curl < l)
 	{
-		while (curp < n && g[curp].dist <= p)
+		while (curp < n && g[curp].dist <= curl)
 		{
 			pq.push(g[curp++].oil);
 		}
@@ -50,7 +54,7 @@ int main()
 			break;
 		}
 		curl += pq.top();
-		pq.top();
+		pq.pop();
 		ans++;
 	}
 	cout << ans << endl;
